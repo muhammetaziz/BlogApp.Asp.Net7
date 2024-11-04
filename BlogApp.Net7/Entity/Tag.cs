@@ -4,16 +4,17 @@ namespace BlogApp.Net7.Entity
 {
     public class Tag
     {
-        [Key]
-        public int Id { get; set; }
+        
+        public int TagId { get; set; }
         public string? Text { get; set; }
-      
-        
-        
-        
-        #region Relation
 
-        public List<Post> Posts { get; set; } = new List<Post>();
+
+
+
+        #region Relation
+        
+
+        public ICollection<TagPost> TagPosts { get; set; } = new List<TagPost>();
         #endregion
         
 

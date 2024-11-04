@@ -4,8 +4,8 @@ namespace BlogApp.Net7.Entity
 {
     public class Comment
     {
-        [Key]
-        public int Id { get; set; }
+         
+        public int CommentId { get; set; }
         public string? Text { get; set; }
         public DateTime PublishedOn { get; set; }
 

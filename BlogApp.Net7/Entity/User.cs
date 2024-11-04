@@ -4,8 +4,8 @@ namespace BlogApp.Net7.Entity
 {
     public class User
     {
-        [Key]
-        public int Id { get; set; }
+        
+        public int UserId { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Password { get; set; }
@@ -15,9 +15,9 @@ namespace BlogApp.Net7.Entity
 
         #region Relation
 
-        public List<Post> Posts { get; set; } = new List<Post>();
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
 
-        public List<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         #endregion
     }
 }
