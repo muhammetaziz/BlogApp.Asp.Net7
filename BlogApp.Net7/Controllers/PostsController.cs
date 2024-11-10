@@ -1,6 +1,7 @@
 ﻿using BlogApp.Net7.Data.Abstract;
 using BlogApp.Net7.Data.Concrete.EfCore;
 using BlogApp.Net7.Entity;
+using BlogApp.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,24 +9,30 @@ namespace BlogApp.Net7.Controllers
 {
     public class PostsController : Controller
     {
-        private IPostRepository _repository;
-
-        public PostsController(IPostRepository repository)
+        private IPostRepository _postRepository;
+        private ITagRepository _tagRepository;
+        public PostsController(IPostRepository postRepo, ITagRepository tagRepo)
         {
-            _repository = repository;
+            _postRepository = postRepo;
+            _tagRepository = tagRepo;
         }
 
         public IActionResult Index()
         {
-            var posts = _repository.Posts.ToList();
-            return View(posts);
+            return View(
+                new PostViewModel
+                {
+                    Posts = _postRepository.Posts.ToList(),
+                    Tags = _tagRepository.Tags.ToList(),
+                }
+                );
         }
 
         public async Task<IActionResult> PostDetails(int id)
         {
 
-            var post = await _repository.Posts.FirstOrDefaultAsync(x => x.PostId == id);
-            var post2 = await _repository
+            var post = await _postRepository.Posts.FirstOrDefaultAsync(x => x.PostId == id);
+            var post2 = await _postRepository
                .Posts
                .FirstOrDefaultAsync(x => x.PostId == id);
             return View(post2);
@@ -40,7 +47,7 @@ namespace BlogApp.Net7.Controllers
 
             model.PublishedOn = DateTime.Now;
             model.UserId = 1;
-            _repository.PostAdd(model);
+            _postRepository.PostAdd(model);
             return RedirectToAction("Index");
 
         }

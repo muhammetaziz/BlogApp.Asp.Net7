@@ -1,4 +1,4 @@
-﻿@model List<BlogApp.Net7.Entity.Post>
+﻿@model PostViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +9,7 @@
     <div class="inner-sec">
         <div class="left-blog-info-w3layouts-agileits text-left">
             <div class="row">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Posts)
                 {
                     <div class="col-lg-4 card" style="padding-bottom:50px">
                         <a href="single.html">
@@ -38,6 +38,16 @@
                             </h5>
                             <p class="card-text mb-3">@item.Content.Substring(0,100) ... </p>
                             <a href="/PostController/PostDetails/@item.PostId/" class="btn btn-primary read-m">Devamını oku</a>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in Model.Tags)
+                {   
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="bg-white p-4">
+                                a
+                            </div>
                         </div>
                     </div>
                 }
