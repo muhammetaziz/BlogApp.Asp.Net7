@@ -1,0 +1,50 @@
+﻿@model List<BlogApp.Net7.Entity.Post>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container">
+
+    <div class="inner-sec">
+        <div class="left-blog-info-w3layouts-agileits text-left">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 card" style="padding-bottom:50px">
+                        <a href="single.html">
+                            <img src="/web/images/7.jpg" class="card-img-top img-fluid" alt="">
+                        </a>
+                        <div class="card-body">
+                            <ul class="blog-icons my-4">
+                                <li>
+                                    <a href="#">
+                                        <i class="far fa-calendar-alt"></i> @item.PublishedOn.ToShortDateString()
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="#">
+                                        <i class="far fa-comment"></i> 21
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-eye"></i> 2000
+                                    </a>
+                                </li>
+                            </ul>
+                            <h5 class="card-title">
+                                <a href="single.html">@item.Title</a>
+                            </h5>
+                            <p class="card-text mb-3">@item.Content.Substring(0,100) ... </p>
+                            <a href="/PostController/PostDetails/@item.PostId/" class="btn btn-primary read-m">Devamını oku</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />

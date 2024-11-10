@@ -1,0 +1,55 @@
+﻿@model BlogApp.Net7.Entity.Post
+
+@{
+    ViewData["Title"] = "PostAdd";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container">
+
+    <h1>Post Ekleme</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="PostAdd">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label"></label>
+                    <input asp-for="Content" class="form-control" />
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PImage" class="control-label"></label>
+                    <input asp-for="PImage" class="form-control" />
+                    <span asp-validation-for="PImage" class="text-danger"></span>
+                </div>
+                <div class="form-group visually-hidden">
+                    <label asp-for="PublishedOn" class="control-label"></label>
+                    <input asp-for="PublishedOn" class="form-control" />
+                    <span asp-validation-for="PublishedOn" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="UserId" value="1" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Oluştur" class="btn btn-primary" />
+                    <a class="btn btn-danger" asp-action="Index">Geri</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+    </div>
+
+
+</div>

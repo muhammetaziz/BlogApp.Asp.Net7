@@ -1,12 +1,11 @@
+using BlogApp.Net7.Data.Abstract;
 using BlogApp.Net7.Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
-
+builder.Services.AddControllersWithViews(); 
 builder.Services.AddDbContext<BlogContext>(options =>
 {
     var config = builder.Configuration;
@@ -14,7 +13,10 @@ builder.Services.AddDbContext<BlogContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+builder.Services.AddScoped<IPostRepository,EfPostRepository>();
+
 var app = builder.Build();
+//SeedData.TestVerileriniDoldur(app);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
