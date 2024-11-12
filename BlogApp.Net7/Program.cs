@@ -15,6 +15,7 @@ builder.Services.AddDbContext<BlogContext>(options =>
 
 builder.Services.AddScoped<IPostRepository,EfPostRepository>();
 builder.Services.AddScoped<ITagRepository,EfTagRepository>();
+builder.Services.AddScoped<IUserRepository,EfUserRepository>();
 
 var app = builder.Build();
 //SeedData.TestVerileriniDoldur(app);
