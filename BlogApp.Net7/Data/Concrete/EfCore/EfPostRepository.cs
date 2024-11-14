@@ -1,5 +1,6 @@
 ﻿using BlogApp.Net7.Data.Abstract;
 using BlogApp.Net7.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Net7.Data.Concrete.EfCore
 {
@@ -13,7 +14,7 @@ namespace BlogApp.Net7.Data.Concrete.EfCore
         }
         public IQueryable<Post> Posts => _context.Posts;
 
-        
+                    
 
         public void PostAdd(Post post)
         {

@@ -9,6 +9,8 @@ namespace BlogApp.Net7.Controllers
 {
     public class PostsController : Controller
     {
+        #region Kurucular
+
         private IPostRepository _postRepository;
         private ITagRepository _tagRepository;
         public PostsController(IPostRepository postRepo, ITagRepository tagRepo)
@@ -16,6 +18,8 @@ namespace BlogApp.Net7.Controllers
             _postRepository = postRepo;
             _tagRepository = tagRepo;
         }
+        #endregion
+        #region Liste
 
         public IActionResult Index()
         {
@@ -27,38 +31,51 @@ namespace BlogApp.Net7.Controllers
                 }
                 );
         }
+        #endregion
+        #region Detaylar
 
-        public async Task<IActionResult> PostDetails(int? id)
+        public async Task<IActionResult> PostDetails(string url)
         {
 
-            if (id == null || _postRepository.Posts == null)
+            if (url == null || _postRepository.Posts == null)
             {
                 return NotFound();
             }
 
             var post = await _postRepository.Posts
-                .FirstOrDefaultAsync(m => m.PostId == id);
+                //.Include(x=>x.User)
+                .FirstOrDefaultAsync(m => m.Url == url);
             if (post == null)
             {
                 return NotFound();
             }
-
+            
+            ViewBag.user = post.User?.Name;
             return View(post);
-             
+
 
         }
+        #endregion
+        #region PostEkleme 
         [HttpGet]
         public IActionResult PostAdd() { return View(); }
         [HttpPost]
 
         public IActionResult PostAdd(Post model)
         {
-
             model.PublishedOn = DateTime.Now;
             model.UserId = 1;
             _postRepository.PostAdd(model);
             return RedirectToAction("Index");
-
         }
+
+
+        #endregion
+        #region PostGüncelleme
+        public IActionResult PostUpdate(Post model)
+        {
+            return View();
+        }
+        #endregion
     }
 }

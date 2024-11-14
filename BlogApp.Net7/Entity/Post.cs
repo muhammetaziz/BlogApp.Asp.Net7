@@ -20,9 +20,9 @@ namespace BlogApp.Net7.Entity
         [MinLength(150)]
         public string? Content { get; set; }
 
+        public string? Url { get; set; }
 
 
-        
         [Required(ErrorMessage = "Resim boş bırakılamaz")]
         [DisplayName(displayName: "Resim")]
         public string? PImage { get; set; }

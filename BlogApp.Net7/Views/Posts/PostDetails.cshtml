@@ -4,6 +4,111 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h1>@Model.PostId</h1>
-<h1>@Model.Title</h1>
-<h1>@Model.Content</h1>
+<!--/blog-->
+<div class="container">
+    <div class="row">
+        <!--left-->
+        <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+            <div class="blog-grid-top">
+                <div class="b-grid-top">
+                    <div class="blog_info_left_grid">
+                        <a href="single.html">
+                            <img src="/web/images/b1.jpg" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-info-middle">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-calendar-alt"></i> @Model.PublishedOn.ToShortDateString()
+                                </a>
+                            </li>
+                            <li class="mx-2">
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-comment"></i> @Model.Comments.Count
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>
+                    <a href="single.html">@Model.Title  </a>
+                </h3>
+                @*<h3>Yazar: @ViewBag.user  </h3>*@
+                <p>
+                    @Model.Content
+                </p>
+                
+            </div>
+            @* Yorum Kısmı *@
+            <div class="comment-top">
+                <h4>Comments</h4>
+                <div class="media">
+                    <img src="images/t1.jpg" alt="" class="img-fluid" />
+                    <div class="media-body">
+                        <h5 class="mt-0">Joseph Goh</h5>
+                        <p>
+                            Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+                            Cras a ornare elit.
+                        </p>
+
+                        <div class="media mt-3">
+                            <a class="d-flex pr-3" href="#">
+                                <img src="images/t2.jpg" alt="" class="img-fluid" />
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Richard Spark</h5>
+                                <p>
+                                    Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+                                    Cras a ornare elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-top">
+                <h4>Leave a Comment</h4>
+                <div class="comment-bottom">
+                    <form action="#" method="post">
+                        <input class="form-control" type="text" name="Name" placeholder="Name" required="">
+                        <input class="form-control" type="email" name="Email" placeholder="Email" required="">
+
+                        <input class="form-control" type="text" name="Subject" placeholder="Subject" required="">
+
+                        <textarea class="form-control" name="Message" placeholder="Message..." required=""></textarea>
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--//left-->
+        <!--right-->
+        <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+            <div class="right-blog-info text-left">
+                <div class="tech-btm">
+                    <img src="images/banner1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="tech-btm">
+                    <h4>Sign up to our newsletter</h4>
+                    <p>Pellentesque dui, non felis. Maecenas male </p>
+                    <form action="#" method="post">
+                        <input type="email" placeholder="Email" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+                <vc:tags-menu></vc:tags-menu>
+
+                <vc:new-posts></vc:new-posts>
+            </div>
+
+        </aside>
+        <!--//right-->
+    </div>
+</div>

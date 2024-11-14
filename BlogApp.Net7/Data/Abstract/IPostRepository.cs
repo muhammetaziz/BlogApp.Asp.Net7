@@ -11,6 +11,7 @@ namespace BlogApp.Net7.Data.Abstract
         void PostAdd(Post post); 
         void PostUpdate(Post post);
         void PostDelete(Post post);
+         
 
     }
 }
