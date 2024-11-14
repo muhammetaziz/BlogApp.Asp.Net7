@@ -28,7 +28,7 @@ namespace BlogApp.Net7.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return _userRepository.Users != null ?
+            return _context.Users != null ?
                         View(await _context.Users.ToListAsync()) :
                         Problem("Entity set 'BlogContext.Users'  is null.");
         }
@@ -41,7 +41,7 @@ namespace BlogApp.Net7.Controllers
                 return NotFound();
             }
 
-            var user = await _userRepository.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {

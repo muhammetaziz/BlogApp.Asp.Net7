@@ -36,25 +36,17 @@
                             <h5 class="card-title">
                                 <a href="single.html">@item.Title</a>
                             </h5>
-                            <p class="card-text mb-3">@item.Content.Substring(0,100) ... </p>
-                            <a href="/PostController/PostDetails/@item.PostId/" class="btn btn-primary read-m">Devamını oku</a>
+                            <p class="card-text mb-3">@item.Content.Substring(0, 100) ... </p>
+                            <a href="/Posts/PostDetails/@item.PostId/" class="btn btn-primary read-m">Devamını oku</a>
                         </div>
                     </div>
                 }
-                @foreach (var item in Model.Tags)
-                {   
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="bg-white p-4">
-                                a
-                            </div>
-                        </div>
-                    </div>
-                }
+                <vc:tags-menu></vc:tags-menu>
+
             </div>
         </div>
     </div>
 </div>
 <br />
 <br />
-<br />
+<br /><vc:new-posts></vc:new-posts> 

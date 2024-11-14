@@ -1,0 +1,27 @@
+﻿@model List<BlogApp.Net7.Entity.Post>
+
+<div class="col-lg-4 footer-grid-agileits-w3ls text-left" style="padding: 15px; max-width: 350px;">
+    <div class="tech-btm" style="font-size: 1rem;">
+        <h3 style="font-size: 1.25rem; font-weight: bold;">Yeni Bloglar</h3>
+        @foreach (var item in Model)
+        {
+            <div class="blog-grids row mb-3" style="display: flex; flex-direction: row; margin-bottom: 10px; font-size: 0.9rem;">
+                <div class="col-md-5 blog-grid-left" style="padding-right: 10px;">
+                    <a href="single.html">
+                        <img width="40" height="40" src="/web/images/4.jpg" class="card-img-top img-fluid" alt="" style="object-fit: cover;">
+                    </a>
+                </div>
+                <div class="col-md-7 blog-grid-right" style="padding-left: 10px;">
+                    <h5 style="font-size: 1rem; font-weight: bold;">
+                        <a href="single.html" style="text-decoration: none; color: inherit;">@item.Title</a>
+                    </h5>
+                    <div class="sub-meta" style="font-size: 0.8rem; color: #777;">
+                        <span>
+                            <i class="far fa-clock"></i> @item.PublishedOn.ToShortDateString()
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

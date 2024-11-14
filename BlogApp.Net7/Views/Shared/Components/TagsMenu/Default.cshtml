@@ -1,0 +1,16 @@
+﻿@model List<BlogApp.Net7.Entity.Tag>
+
+
+
+
+<div class="row"> 
+    <div class="col-4  ">
+        <h4>Tags</h4> 
+        @foreach (var item in Model)
+        {
+            <a href="#">
+                <p class="badge badge-danger">@item.Text</p>
+            </a>
+        }
+    </div> 
+</div>

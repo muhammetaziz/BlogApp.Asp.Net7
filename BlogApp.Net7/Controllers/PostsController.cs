@@ -28,14 +28,23 @@ namespace BlogApp.Net7.Controllers
                 );
         }
 
-        public async Task<IActionResult> PostDetails(int id)
+        public async Task<IActionResult> PostDetails(int? id)
         {
 
-            var post = await _postRepository.Posts.FirstOrDefaultAsync(x => x.PostId == id);
-            var post2 = await _postRepository
-               .Posts
-               .FirstOrDefaultAsync(x => x.PostId == id);
-            return View(post2);
+            if (id == null || _postRepository.Posts == null)
+            {
+                return NotFound();
+            }
+
+            var post = await _postRepository.Posts
+                .FirstOrDefaultAsync(m => m.PostId == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+             
 
         }
         [HttpGet]
