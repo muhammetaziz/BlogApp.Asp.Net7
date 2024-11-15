@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews(); 
+builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BlogContext>(options =>
 {
     var config = builder.Configuration;
@@ -13,9 +13,9 @@ builder.Services.AddDbContext<BlogContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-builder.Services.AddScoped<IPostRepository,EfPostRepository>();
-builder.Services.AddScoped<ITagRepository,EfTagRepository>();
-builder.Services.AddScoped<IUserRepository,EfUserRepository>();
+builder.Services.AddScoped<IPostRepository, EfPostRepository>();
+builder.Services.AddScoped<ITagRepository, EfTagRepository>();
+builder.Services.AddScoped<IUserRepository, EfUserRepository>();
 
 var app = builder.Build();
 //SeedData.TestVerileriniDoldur(app);
@@ -35,9 +35,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "post-details",
-    pattern: "posts/{url}",
-    defaults: new {controller="Post",action="Details"});
+    name: "post_details",
+    pattern: "posts/{url}/abc",
+    defaults: new { controller = "Posts", action = "PostDetails" });
 
 
 app.MapControllerRoute(

@@ -46,5 +46,6 @@ namespace BlogApp.Net7.Data.Concrete.EfCore
         public DbSet<User> Users => Set<User>();
         public DbSet<Tag> Tags => Set<Tag>();
         public DbSet<TagPost> TagPosts => Set<TagPost>();
+        public DbSet<Subscribe> Subscribe => Set<Subscribe>();
     }
 }

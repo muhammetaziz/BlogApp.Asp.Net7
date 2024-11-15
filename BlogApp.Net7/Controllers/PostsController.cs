@@ -37,20 +37,20 @@ namespace BlogApp.Net7.Controllers
         public async Task<IActionResult> PostDetails(string url)
         {
 
-            if (url == null || _postRepository.Posts == null)
-            {
-                return NotFound();
-            }
+            //if (url == null || _postRepository.Posts == null)
+            //{
+            //    return NotFound();
+            //}
 
             var post = await _postRepository.Posts
                 //.Include(x=>x.User)
                 .FirstOrDefaultAsync(m => m.Url == url);
-            if (post == null)
-            {
-                return NotFound();
-            }
+            //if (post == null)
+            //{
+            //    return NotFound();
+            //}
             
-            ViewBag.user = post.User?.Name;
+            //ViewBag.user = post.User?.Name;
             return View(post);
 
 
