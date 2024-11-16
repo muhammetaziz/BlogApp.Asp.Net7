@@ -37,11 +37,12 @@
                                 <a href="single.html">@item.Title</a>
                             </h5>
                             <p class="card-text mb-3">@item.Content?.Substring(0, 100) ... </p>
-                            <a href="/posts/@item.Url" class="btn btn-primary read-m">Devamını oku</a>
+                            <a href="/Posts/PostDetails/@item.PostId/" class="btn btn-primary read-m">Devamını oku</a>
                         </div>
                     </div>
+                    <a hidden href="/posts/@item.Url" class="btn btn-primary read-m">Devamını oku</a>
                 }
-                 
+
 
             </div>
         </div>
@@ -49,4 +50,4 @@
 </div>
 <br />
 <br />
-<br /> 
+<br />     

@@ -34,10 +34,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "post_details",
-    pattern: "posts/{url}/abc",
-    defaults: new { controller = "Posts", action = "PostDetails" });
+//app.MapControllerRoute(
+//    name: "post_details",
+//    pattern: "posts/{url}/abc",
+//    defaults: new { controller = "Posts", action = "PostDetails" });
 
 
 app.MapControllerRoute(

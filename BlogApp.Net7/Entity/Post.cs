@@ -44,7 +44,7 @@ namespace BlogApp.Net7.Entity
 
         public ICollection<TagPost> TagPosts { get; set; } = new List<TagPost>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-
+          
         #endregion
 
     }

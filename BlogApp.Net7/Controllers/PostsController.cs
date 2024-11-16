@@ -34,23 +34,22 @@ namespace BlogApp.Net7.Controllers
         #endregion
         #region Detaylar
 
-        public async Task<IActionResult> PostDetails(string url)
+        public async Task<IActionResult> PostDetails(/*string url*/ int? id)
         {
 
-            //if (url == null || _postRepository.Posts == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null || _postRepository.Posts == null)
+            {
+                return NotFound();
+            }
 
             var post = await _postRepository.Posts
-                //.Include(x=>x.User)
-                .FirstOrDefaultAsync(m => m.Url == url);
-            //if (post == null)
-            //{
-            //    return NotFound();
-            //}
-            
-            //ViewBag.user = post.User?.Name;
+                 .Include(x => x.Tag)
+                .FirstOrDefaultAsync(m => m.PostId == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
             return View(post);
 
 
@@ -63,6 +62,7 @@ namespace BlogApp.Net7.Controllers
 
         public IActionResult PostAdd(Post model)
         {
+
             model.PublishedOn = DateTime.Now;
             model.UserId = 1;
             _postRepository.PostAdd(model);
